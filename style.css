@@ -1,0 +1,541 @@
+/* ===================================================
+   CSS RESET & BASE STYLES
+   =================================================== */
+
+/*
+  A "CSS reset" removes the default styles browsers apply
+  (each browser has slightly different defaults). This gives
+  us a clean, consistent starting point.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+  CSS VARIABLES (Custom Properties)
+  Defined on :root (the <html> element) so they're available
+  everywhere. This makes it easy to change your color scheme
+  in one place instead of hunting through the whole file.
+*/
+
+:root {
+    --blue-dark: #1a3a5c;
+    --blue-medium: #2b6cb0;
+    --blue-light: #ebf2fa;
+    --blue-accent: #3b82f6;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --white: #ffffff;
+    --gray-light: #f1f5f9;
+    --gray-border: #e2e8f0;
+    --radius: 8px;
+}
+
+/* ===================================================
+   TYPOGRAPHY & BODY
+   =================================================== */
+
+/*
+  We style the <body> to set defaults that most child
+  elements will inherit (font, color, line-height).
+  "Inheritance" is a core CSS concept: children inherit
+  certain properties from their parents automatically.
+*/
+
+body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+a {
+    color: var(--blue-medium);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===================================================
+   NAVIGATION BAR
+   =================================================== */
+
+/*
+  "position: fixed" removes the nav from normal document
+  flow and pins it relative to the viewport (the browser
+  window). It stays at the top even when you scroll.
+  "z-index" controls stacking order -- higher values
+  appear on top of lower ones.
+*/
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--blue-dark);
+    z-index: 1000;
+    padding: 0 24px;
+}
+
+.nav-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+/*
+  The logo is styled as a bold white link. We override
+  the default <a> color set above for just this element
+  using a more specific selector (class selector beats
+  element selector in CSS specificity).
+*/
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.logo:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+/*
+  "list-style: none" removes bullet points from the <ul>.
+  "display: flex" turns the list into a horizontal row.
+  "gap" adds even spacing between each <li>.
+*/
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--white);
+    font-size: 0.95rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+/*
+  PSEUDO-CLASS: ":hover" applies styles only when
+  the user's mouse is over the element. Great for
+  giving interactive feedback.
+*/
+
+.nav-links a:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+/*
+  ACTIVE NAV LINK: JavaScript adds the "active" class
+  to whichever nav link matches the currently visible
+  section. We style it with full opacity and a bottom
+  border so it looks "selected."
+*/
+
+.nav-links a.active {
+    opacity: 1;
+    border-bottom: 2px solid var(--blue-accent);
+    padding-bottom: 2px;
+}
+
+/* ===================================================
+   DARK MODE TOGGLE BUTTON
+   =================================================== */
+
+/*
+  We style the <button> to look like a small pill that
+  fits naturally in the navbar. "cursor: pointer" shows
+  the hand icon on hover -- buttons have it by default,
+  but it's good practice to be explicit.
+  "border: none" removes the default browser button border.
+  "background: none" removes the default gray background.
+  We then add our own styling from scratch.
+*/
+
+#dark-mode-toggle {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ===================================================
+   HERO SECTION
+   =================================================== */
+
+/*
+  The hero uses a blue gradient background. "linear-gradient"
+  blends two colors from one direction to another -- here
+  it goes from the dark blue at the top to a medium blue
+  at the bottom. "padding-top: 120px" accounts for the
+  fixed navbar covering the top 60px.
+*/
+
+#hero {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue-medium));
+    color: var(--white);
+    text-align: center;
+    padding: 120px 24px 64px;
+}
+
+/*
+  The headshot image is made circular with border-radius: 50%.
+  "object-fit: cover" ensures the image fills the circle
+  without stretching -- it crops instead of distorting.
+*/
+
+.headshot {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+}
+
+#hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
+
+.tagline {
+    font-size: 1rem;
+    opacity: 0.75;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+/* ===================================================
+   SECTIONS (shared layout)
+   =================================================== */
+
+/*
+  Every <section> gets the same max-width and centering.
+  "max-width" prevents lines of text from being too wide
+  on big monitors (long lines are hard to read).
+  "margin: 0 auto" is a classic CSS centering trick:
+  it distributes the remaining horizontal space equally
+  on both sides.
+*/
+
+section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 24px;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    color: var(--blue-dark);
+    margin-bottom: 32px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--blue-accent);
+    display: inline-block;
+}
+
+/* ===================================================
+   CARDS (experience & project items)
+   =================================================== */
+
+/*
+  Each card has a left border accent for visual flair.
+  "transition" animates property changes over time --
+  here, when the shadow or transform changes (on hover),
+  it smoothly transitions over 0.2 seconds instead of
+  jumping instantly.
+*/
+
+.card {
+    background-color: var(--gray-light);
+    border-left: 4px solid var(--blue-accent);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+/*
+  FLEXBOX LAYOUT: "display: flex" makes .card-header
+  a flex container. Its children (the h3 and span) become
+  flex items laid out in a row. "justify-content: space-between"
+  pushes them to opposite ends. "align-items: baseline"
+  aligns them by their text baselines so they look lined up
+  even though the h3 font is bigger.
+*/
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+.card-header h3 {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.card-org {
+    font-size: 0.9rem;
+    color: var(--blue-medium);
+    margin-bottom: 8px;
+}
+
+.card ul {
+    padding-left: 20px;
+    margin-top: 8px;
+}
+
+.card li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ===================================================
+   SKILLS SECTION
+   =================================================== */
+
+.skills-group {
+    margin-bottom: 24px;
+}
+
+.skills-group h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/*
+  Here we override the default vertical list layout.
+  "display: flex" + "flex-wrap: wrap" makes the <li>
+  items flow left-to-right and wrap onto new lines
+  when they run out of room -- creating a "tag" layout.
+*/
+
+.skill-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-list li {
+    background-color: var(--blue-light);
+    color: var(--blue-dark);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ===================================================
+   CONTACT SECTION
+   =================================================== */
+
+.contact-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+/*
+  These links are styled as button-like pill shapes.
+  The "transition" makes the background-color change
+  feel smooth when hovered.
+*/
+
+.contact-links a {
+    background-color: var(--blue-medium);
+    color: var(--white);
+    padding: 10px 24px;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+}
+
+.contact-links a:hover {
+    background-color: var(--blue-dark);
+    text-decoration: none;
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+
+footer {
+    text-align: center;
+    padding: 32px 24px;
+    background-color: var(--blue-dark);
+    color: var(--white);
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* ===================================================
+   DARK MODE OVERRIDES
+   =================================================== */
+
+/*
+  When JavaScript adds class="dark" to <body>, every rule
+  below activates. We override the CSS variables defined
+  in :root, which means every element that uses var(--...)
+  automatically picks up the new colors. This is the power
+  of CSS variables — one change cascades everywhere.
+
+  "body.dark" is a COMPOUND SELECTOR: it matches a <body>
+  element that also has the class "dark". It's more specific
+  than just "body", so these variable values win.
+*/
+
+body.dark {
+    --blue-dark: #0f1e30;
+    --blue-medium: #4a9eed;
+    --blue-light: #1a2d42;
+    --blue-accent: #5ba3f5;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --white: #0f172a;
+    --gray-light: #1e293b;
+    --gray-border: #334155;
+}
+
+/*
+  Some elements need direct overrides because they don't
+  use variables, or because we need to adjust values
+  specifically for dark mode readability.
+*/
+
+body.dark nav {
+    background-color: #0b1422;
+}
+
+body.dark #hero {
+    background: linear-gradient(135deg, #0b1422, #1a3a5c);
+    color: #e2e8f0;
+}
+
+body.dark .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .contact-links a:hover {
+    background-color: #5ba3f5;
+}
+
+body.dark footer {
+    background-color: #0b1422;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+    color: #e2e8f0;
+}
+
+body.dark .skill-list li {
+    color: #e2e8f0;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (Mobile)
+   =================================================== */
+
+/*
+  A MEDIA QUERY: the styles inside only apply when the
+  browser width is 600px or less (phones). This is how
+  "responsive design" works -- you write different rules
+  for different screen sizes. The "mobile-first" approach
+  would do this the other way (base styles for mobile,
+  media queries for desktop), but this approach is common
+  and easier to understand when learning.
+*/
+
+@media (max-width: 600px) {
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+
+    #hero {
+        padding: 100px 20px 48px;
+    }
+
+    #hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .headshot {
+        width: 120px;
+        height: 120px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
