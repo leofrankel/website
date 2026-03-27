@@ -132,14 +132,36 @@ sections.forEach(function (section) {
     are available to query.
 */
 
+/*
+  FEATURE 4: NAV PILL BACKGROUND ON SCROLL
+  -----------------------------------------------------------
+  When body content scrolls under the nav bar, a pill-shaped
+  background fades in behind the section links so they remain
+  readable. We add a "scrolled" class to <nav> and let CSS
+  handle the visual change via a smooth transition.
+*/
+
+var navEl = document.querySelector("nav");
+
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 20) {
+        navEl.classList.add("scrolled");
+    } else {
+        navEl.classList.remove("scrolled");
+    }
+});
+
 var darkModeToggle = document.getElementById("dark-mode-toggle");
 
 // On page load, check if the user previously chose dark mode
 if (localStorage.getItem("darkMode") === "on") {
     document.body.classList.add("dark");
+    darkModeToggle.textContent = "🌙";
 }
 
 darkModeToggle.addEventListener("click", function () {
     var isDark = document.body.classList.toggle("dark");
     localStorage.setItem("darkMode", isDark ? "on" : "off");
+    // Swap the symbol to match the current mode
+    darkModeToggle.textContent = isDark ? "🌙" : "☀️";
 });

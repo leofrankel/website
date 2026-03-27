@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo Frankel | CS &amp; Linguistics @ CMU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,16 +20,26 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button id="dark-mode-toggle" aria-label="Toggle dark mode">Light/Dark</button>
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">☀️</button>
         </div>
     </nav>
 
     <!-- Hero section: the first thing visitors see -->
     <header id="hero">
-        <img src="lfrankel2jpg.jpg" alt="Photo of Leo Frankel" class="headshot">
-        <h1>Leo Frankel</h1>
-        <p class="subtitle">CS &amp; Linguistics @ Carnegie Mellon University</p>
-        <p class="tagline">Passionate about advancing technology to help others. Eager to learn and work with Software Engineering, Natural Language Processing, and AI.</p>
+        <div class="hero-content">
+            <img src="lfrankel2jpg.jpg" alt="Photo of Leo Frankel" class="headshot">
+            <div class="hero-text">
+                <h1>Leo Frankel</h1>
+                <p class="subtitle">CS &amp; Linguistics @ Carnegie Mellon University</p>
+                <p class="tagline">Passionate about advancing technology to help others. Eager to learn and work with Software Engineering, Natural Language Processing, and AI.</p>
+            </div>
+        </div>
+        <!-- Wave SVG creates a smooth transition from the hero gradient into the page background -->
+        <div class="hero-wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"/>
+            </svg>
+        </div>
     </header>
 
     <!-- About section -->
