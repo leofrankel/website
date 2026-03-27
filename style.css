@@ -66,7 +66,7 @@ body {
     font-family: 'DM Sans', "Segoe UI", sans-serif;
     color: var(--text-primary);
     line-height: 1.6;
-    background: linear-gradient(160deg, #a0dfd0 0%, #96c4ef 100%) fixed;
+    background: linear-gradient(160deg, #b5ddf5 0%, #8ec8ec 55%, #9addd4 100%) fixed;
 }
 
 h1, h2 {
