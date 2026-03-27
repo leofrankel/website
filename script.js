@@ -153,8 +153,8 @@ window.addEventListener("scroll", function () {
 
 var darkModeToggle = document.getElementById("dark-mode-toggle");
 
-// On page load, check if the user previously chose dark mode
-if (localStorage.getItem("darkMode") === "on") {
+// On page load, apply dark mode unless the user has explicitly chosen light mode
+if (localStorage.getItem("darkMode") !== "off") {
     document.body.classList.add("dark");
     darkModeToggle.textContent = "🌙";
 }
