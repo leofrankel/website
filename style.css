@@ -493,6 +493,14 @@ body.dark .skill-list li {
     color: #e2e8f0;
 }
 
+body.dark .logo,
+body.dark .nav-links a,
+body.dark #dark-mode-toggle,
+body.dark .contact-links a,
+body.dark footer {
+    color: #e2e8f0;
+}
+
 /* ===================================================
    RESPONSIVE DESIGN (Mobile)
    =================================================== */
