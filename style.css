@@ -346,6 +346,30 @@ section h2 {
 }
 
 /* ===================================================
+   CARD SUBROLES (nested roles within a card)
+   =================================================== */
+
+.card-subrole {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gray-border);
+}
+
+.card-subrole-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+.card-subrole-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ===================================================
    SKILLS SECTION
    =================================================== */
 
